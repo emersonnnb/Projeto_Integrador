@@ -1,9 +1,8 @@
 package model;
 
-public class PessoaJuridica {
+public class PessoaJuridica extends Pessoa{
 	
 	private int cnpj;
-	
 	
 	
 	public int getCnpj() {
