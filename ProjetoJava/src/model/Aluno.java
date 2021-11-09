@@ -19,7 +19,7 @@ public class Aluno extends PessoaFisica {
 		return this.matricula;
 	}
 	
-	static void addNaLista(Aluno aluno){
+	public static void addNaLista(Aluno aluno){
 		listaAlunos.add(aluno);
 	}
 

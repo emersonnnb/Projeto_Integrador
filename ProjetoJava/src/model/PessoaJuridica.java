@@ -1,20 +1,21 @@
 package model;
 
-public class PessoaJuridica extends Pessoa{
-	
-	private int cnpj;
-	
-	
-	public int getCnpj() {
-		return cnpj;
-	}
+public abstract class PessoaJuridica extends Pessoa {
+	private String cnpj;
 
-	public void setCnpj(int cnpj) {
+	public PessoaJuridica(String nome, String end, String tel, String email, String cnpj) {
+		super(nome, end, tel, email);
 		this.cnpj = cnpj;
 	}
 
-	public int validarCnpj() {
-		return cnpj;
+	public String getCnpj() {
+		return this.cnpj;
 	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	protected abstract String validarCnpj(); // retorná mensagem de confirmação ou negação
 
 }
