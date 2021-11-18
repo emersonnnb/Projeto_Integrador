@@ -85,6 +85,7 @@ public class Principal {
 			case 1:
 				Aluno aluno = new Aluno(nome, endereco, telefone, email, cpf_cnpj);
 				Aluno.addNaLista(aluno);
+				aluno.salvar();
 				break;
 			case 2:
 				Professor professor = new Professor(nome, endereco, telefone, email,cpf_cnpj);

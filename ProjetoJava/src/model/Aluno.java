@@ -1,7 +1,10 @@
 package model;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.*;
 
 
 public class Aluno extends PessoaFisica {
@@ -38,9 +41,26 @@ public class Aluno extends PessoaFisica {
 		return "abc";
 
 	}
-
+	
 	public String toString() {
 		return String.format("Aluno: %s\nMatrícula n. %s\nE-mail: %s\nCPF n. %s\n-------------------", super.getNome(), this.matricula,
 				super.getEmail(), super.getCpf());
 	}
+	
+	public void salvar() {
+		
+		try {
+			FileWriter fw = new FileWriter("Alunos.txt", true);
+			PrintWriter pw = new PrintWriter(fw);
+			pw.println(toString());
+			pw.flush();
+			pw.close();
+			fw.close();
+		}catch(IOException erro) {
+			System.out.println("Ocorreu um erro. O arquivo não foi salvo.");
+		}
+		
+	}
+
+	
 }

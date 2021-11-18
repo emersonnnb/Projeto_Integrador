@@ -40,4 +40,10 @@ public class Fornecedor extends PessoaJuridica {
 		return String.format("Fornecedor: %s\n cadastro n. %s\nE-mail: %s\nCPF n. %s\n-------------------", super.getNome(), this.cadastroFornecedor,
 				super.getEmail(), super.getCnpj());
 	}
+
+	@Override
+	public void salvar() {
+		// TODO Auto-generated method stub
+		
+	}
 }
