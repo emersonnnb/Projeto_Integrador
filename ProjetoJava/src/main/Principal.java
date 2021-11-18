@@ -1,5 +1,8 @@
 package main;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 import model.Aluno;
@@ -9,11 +12,11 @@ import model.Professor;
 
 public class Principal {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
-		char continuar;
+		int n = 0;
 		
-		do {			
+		while(n != 1){			
 			Scanner scan = new Scanner(System.in);
 			
 			apresentacao(); 
@@ -31,22 +34,25 @@ public class Principal {
 					cadastro(escolha);	
 					break;
 				case 4:
-					Aluno.getLista();
+					carregar("Alunos.txt");
 					break;
 				case 5:
-					Professor.getLista();
+					carregar("Professores.txt");
 					break;
 				case 6:
-					Fornecedor.getLista();
+					carregar("Fornecedores.txt");
 					break;
 				default: 
 					System.out.println("Opção inválida.");
 			}
-			System.out.println("Deseja sair do sistema? S/N");
-			continuar = scan.next().charAt(0); 
 			
-		}while(continuar != 'n' || continuar != 'N'); 
+			System.out.println("Para encerrar, clique '1'");
+			System.out.println("Para continuar, clique '0'");
+			n = scan.nextInt();		
 			
+		}
+			
+		System.out.println("Até mais!");
 
 	}
 	
@@ -64,6 +70,9 @@ public class Principal {
 	public static void cadastro(int escolha) {
 		Scanner scan = new Scanner(System.in);
 		Scanner scan2 = new Scanner(System.in);
+		Scanner scan3 = new Scanner(System.in);
+		Scanner scan4 = new Scanner(System.in);
+		Scanner scan5 = new Scanner(System.in); //problema na inserção de dados pelo usuário
 	
 		System.out.println("Cadastramento");
 		System.out.println("Nome completo: ");
@@ -73,31 +82,54 @@ public class Principal {
 		String endereco = scan2.next(); 
 		
 		System.out.println("Telefone ");
-		String telefone = scan.next(); 
+		String telefone = scan3.next(); 
 		
 		System.out.println("E-mail: ");
-		String email = scan.next(); 
+		String email = scan4.next(); 
 		
 		System.out.println("CPF: ");
-		String cpf_cnpj = scan.next(); 
+		String cpf_cnpj = scan5.next(); 
 		
 		switch(escolha) {
 			case 1:
 				Aluno aluno = new Aluno(nome, endereco, telefone, email, cpf_cnpj);
-				Aluno.addNaLista(aluno);
 				aluno.salvar();
 				break;
 			case 2:
 				Professor professor = new Professor(nome, endereco, telefone, email,cpf_cnpj);
-				Professor.addNaLista(professor);
-				break;
+				professor.salvar();
+				break;				
 			case 3: 
 				Fornecedor fornecedor = new Fornecedor(nome, endereco, telefone, email, cpf_cnpj);
-				Fornecedor.addNaLista(fornecedor);
+				fornecedor.salvar(); 
 				break;
 		}
 		
 		System.out.println("Cadastro realizado com sucesso.");
+	}
+	
+	
+	
+	public static void carregar(String caminho) throws IOException{
+		String linha = new String(); 
+		
+		try {
+			FileReader leitor = new FileReader(caminho);
+			BufferedReader bufferDeArquivo = new BufferedReader(leitor);
+			
+			while(true) {
+				linha = bufferDeArquivo.readLine(); 
+				
+				if (linha == null) {
+					break;
+				}
+				System.out.println(linha);
+				
+			}
+		}catch(Exception e) {
+			System.out.println("Não foi possível retornar os usuários cadastrados.");
+		}
+		
 	}
 	
 	

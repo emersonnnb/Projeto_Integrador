@@ -1,25 +1,13 @@
-Aluno: dfljdfjlk
-Matrícula n. 234125-1-A
-E-mail: dfljdfjl
-CPF n. fljkdfl
 -------------------
-Aluno: dkdk
-Matrícula n. 234125-0-A
-E-mail: dkdk
-CPF n. dkdk
--------------------
-Aluno: dkdkd
-Matrícula n. 234125-1-A
-E-mail: dkdk
-CPF n. dkdk
--------------------
-Aluno: dldl
-Matrícula n. 234125-2-A
-E-mail: ddl
-CPF n. dldl
--------------------
-Aluno: dkdk
-Matrícula n. 234125-0-A
-E-mail: dkdk
-CPF n. dkdk
+Aluno: Rafael
+E-mail: rafael@hotmial.com
+CPF n. 2544122654252
+--------------------------------------
+Aluno: Sandro
+E-mail: sandro@hotmial.com
+CPF n. 52121645465456
+--------------------------------------
+Aluno: Teo
+E-mail: teo@hotmial.com
+CPF n. 4564145646456456
 -------------------
