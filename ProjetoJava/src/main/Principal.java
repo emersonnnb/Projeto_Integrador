@@ -12,78 +12,82 @@ import model.Professor;
 
 public class Principal {
 	
+	
 	public static void main(String[] args) throws IOException {
+		int op=0;
+			
+		Scanner sc = new Scanner(System.in);		
 		
-		int n = 0;
+		do {			
+			System.out.println("------- Bem-vindo ao sistema universitário -------\n");
+			System.out.println("1 - Cadastro de aluno");
+			System.out.println("2 - Cadastro de professor");
+			System.out.println("3 - Cadastro de fornecedor");
+			System.out.println("4 - Exibir lista de alunos");
+			System.out.println("5 - Exibir lista de professores");
+			System.out.println("6 - Exibir lista de fornecedores");
+			System.out.println("7 - Sair");	
+			System.out.println("\nDigite uma opção desejada: ");
+			op=sc.nextInt();
+			
+			switch (op) {
+			
+			case 1:
+				System.out.println("\n** Cadastro de Alunos ** \n");
+				cadastro(op);			    
+				break;
+			case 2:
+				System.out.println("\n** Cadastro de Professores ** \n");
+				cadastro(op);
+				break;
+			case 3:
+				System.out.println("\n** Cadastro de Fornecedores ** \n");
+				cadastro(op);
+				break;
+			case 4:
+				carregar("Alunos.txt");
+				System.out.print ("Tecle Enter para continuar .... "); 
+				System.in.read ();
+				break;
+			case 5:				
+				carregar("Professores.txt");
+				System.out.print ("Tecle Enter para continuar .... "); 
+				System.in.read ();
+				break;
+			case 6:
+				
+				carregar("Fornecedores.txt");
+				System.out.print ("Tecle Enter para continuar .... "); 
+				System.in.read ();
+				break;
+			case 7:
+				System.out.println("SAINDO....");
+				System.exit(0);				
+			default:
+				System.out.println("\n***********************");
+				System.out.println("*** Opção Invalida! ***");
+				System.out.println("***********************\n");
+				break;			
+			}			
+		}while(op>0 || op<7);	
 		
-		while(n != 1){			
-			Scanner scan = new Scanner(System.in);
-			
-			apresentacao(); 
-						
-			int escolha = scan.nextInt(); 
-			
-			switch (escolha) {
-				case 1:
-					cadastro(escolha);	
-					break;
-				case 2:
-					cadastro(escolha);	
-					break;
-				case 3:
-					cadastro(escolha);	
-					break;
-				case 4:
-					carregar("Alunos.txt");
-					break;
-				case 5:
-					carregar("Professores.txt");
-					break;
-				case 6:
-					carregar("Fornecedores.txt");
-					break;
-				default: 
-					System.out.println("Opção invalída.");
-			}
-			
-			System.out.println("Para encerrar, clique '1'");
-			System.out.println("Para continuar, clique '0'");
-			n = scan.nextInt();					
-		}			
-		System.out.println("AtÃ© mais!");
 	}
+
+
+	public static void cadastro(int escolha) throws IOException {
+		
+		Scanner sc = new Scanner(System.in);
 	
-	public static void apresentacao() {
-		System.out.println("------- Bem-vindo ao sistema universitÃ¡rio -------");
-		System.out.println("Escolha uma das opÃ§Ãµes para continuar");
-		System.out.println("1.Cadastro de aluno");
-		System.out.println("2.Cadastro de professor");
-		System.out.println("3.Cadastro de fornecedor");
-		System.out.println("4.Gerar lista de alunos");
-		System.out.println("5.Gerar lista de professores");
-		System.out.println("6.Gerar lista de fornecedores");
-	}
-	
-	public static void cadastro(int escolha) {
-		Scanner scan = new Scanner(System.in);
-		Scanner scan2 = new Scanner(System.in);
-		Scanner scan3 = new Scanner(System.in);
-		Scanner scan4 = new Scanner(System.in);
-		Scanner scan5 = new Scanner(System.in); //problema na inserÃ§Ã£o de dados pelo usuÃ¡rio
-	
-		System.out.println("Cadastramento");
 		System.out.println("Nome completo: ");
-		String nome = scan.next(); 		
-		System.out.println("EndereÃ§o: ");
-		String endereco = scan2.next(); 
-		System.out.println("Telefone ");
-		String telefone = scan3.next(); 
-		
+		String nome = sc.nextLine(); 		
+		System.out.println("Endereço: ");
+		String endereco = sc.nextLine(); 		
+		System.out.println("Telefone: ");
+		String telefone = sc.nextLine();		
 		System.out.println("E-mail: ");
-		String email = scan4.next(); 
-		
+		String email = sc.nextLine(); 			
 		System.out.println("CPF: ");
-		String cpf_cnpj = scan5.next(); 
+		String cpf_cnpj = sc.nextLine(); 
 		
 		switch(escolha) {
 			case 1:
@@ -100,10 +104,11 @@ public class Principal {
 				break;
 		}
 		
-		System.out.println("Cadastro realizado com sucesso.");
+		System.out.println("\nCadastro realizado com sucesso!!\n");
+		System.out.print ("Tecle Enter para continuar .... \n"); 
+		System.in.read ();
+		
 	}
-	
-	
 	
 	public static void carregar(String caminho) throws IOException{
 		String linha = new String(); 
@@ -122,10 +127,26 @@ public class Principal {
 				
 			}
 		}catch(Exception e) {
-			System.out.println("NÃ£o foi possÃ­vel retornar os usuÃ¡rios cadastrados.");
+			System.out.println("Não foi possivel retornar usuarios cadastrados.");
+			System.out.print ("Tecle Enter para continuar .... "); 
+			System.in.read ();
 		}
 		
 	}
 	
-	
+	public class LimpaConsole {
+	    public static void main(String[] args) throws IOException, InterruptedException {
+	        Scanner scanner = new Scanner(System.in);
+	        System.out.println("Teste");
+	        String texto = scanner.next();
+
+	        //Limpa a tela no windows, no linux e no MacOS
+	        if (System.getProperty("os.name").contains("Windows"))
+	            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+	        else
+	            Runtime.getRuntime().exec("clear");
+
+	    }
+	}
 }
+

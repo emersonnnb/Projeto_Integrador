@@ -1,13 +1,5 @@
 -------------------
-Aluno: tyeste
-E-mail: dfdfg
-CPF n. adfgdfg
---------------------------------------
-Aluno: teste
-E-mail: teste
-CPF n. teste
---------------------------------------
-Aluno: sdv
-E-mail: adf
-CPF n. adsfbv
+Aluno: 
+E-mail: 
+CPF n. 
 -------------------
