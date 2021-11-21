@@ -1,26 +1,18 @@
 package model;
 
-import java.util.Date;
+public abstract class PessoaFisica extends Pessoa {
+	private String cpf;
 
-public class PessoaFisica extends Pessoa{
-	
-	private int cpf;
-	private Date nascimento;
-	
-	public int getCpf() {
-		return cpf;
-	}
-	public void setCpf(int cpf) {
+	public PessoaFisica(String nome, String end, String tel, String email, String cpf) {
+		super(nome, end, tel, email);
 		this.cpf = cpf;
+
 	}
-	public Date getNascimento() {
-		return nascimento;
+
+	public String getCpf() {
+		return this.cpf;
 	}
-	public void setNascimento(Date nascimento) {
-		this.nascimento = nascimento;
-	}
+
 	
-	public int ValidarCpf() {
-		return cpf;		
-	}
+
 }
